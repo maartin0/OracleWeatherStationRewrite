@@ -1,4 +1,4 @@
-import os
+import time, os
 
 class File:
     """Generic file object for storing data"""
@@ -97,3 +97,8 @@ class File:
     def body(self):
         """Property returns the raw content of the file excluding the header"""
         return '\n'.join(self.body_lines)
+
+    @property
+    def age_seconds(self):
+        """Property returns time in seconds since the file was last modified"""
+        return time.time() - os.path.getmtime(self.abs_path) if self.exists else -1
