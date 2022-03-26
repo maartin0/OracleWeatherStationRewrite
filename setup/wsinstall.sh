@@ -66,22 +66,6 @@ echo 'Installing required packages'
 ## Install com tools
 sudo apt-get install i2c-tools python-smbus telnet -y
 
-## Set password for mysql-server
-echo 'Please choose a password for your database'
-read -s -p "Password: " PASS1 < /dev/tty
-echo
-read -s -p "Password (again): " PASS2 < /dev/tty
-
-# check if passwords match and if not ask again
-while [ "$PASS1" != "$PASS2" ];
-do
-    echo
-    echo "Please try again"
-    read -s -p "Password: " PASS1 < /dev/tty
-    echo
-    read -s -p "Password (again): " PASS2 < /dev/tty
-done
-
 ## Setup rc.local to start weatherstaion daemon
 sudo sed -i '/exit 0/d' /etc/rc.local
 echo 'echo "Starting Weather Station daemon..."' | sudo tee -a /etc/rc.local
