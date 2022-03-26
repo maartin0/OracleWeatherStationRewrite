@@ -69,7 +69,7 @@ sudo apt-get install i2c-tools python-smbus telnet -y
 ## Setup rc.local to start weatherstaion daemon
 sudo sed -i '/exit 0/d' /etc/rc.local
 echo 'echo "Starting Weather Station daemon..."' | sudo tee -a /etc/rc.local
-echo '/home/pi/weather-station/interrupt_daemon.py start' | sudo tee -a /etc/rc.local
+echo '/home/pi/live/bin/start_daemon' | sudo tee -a /etc/rc.local
 echo 'exit 0' | sudo tee -a /etc/rc.local
 
 ## Alter crontab for periodic uploads

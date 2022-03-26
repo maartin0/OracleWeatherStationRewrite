@@ -1,2 +1,3 @@
+#!/bin/bash
 cd ../
 python log_all_sensors.py
