@@ -1,0 +1,13 @@
+[Unit]
+Description=Weather Station Flask Server
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+ExecStart=/home/pi/live/bin/start_webserver
+
+[Install]
+WantedBy=multi-user.target
