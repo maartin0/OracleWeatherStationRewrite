@@ -64,7 +64,7 @@ class Database:
     self.current_file.insert(*values)
 
   @property
-  def content(self, key_delimiter='\t\t', file_delimiter='\t\t\t\t'):
+  def content(self, key_delimiter='`', file_delimiter='¬'):
     """Returns content of all files in database. 2 tabs between file name and content, 4 tabs between files"""
     files = {file.basename: file.content for file in self.files}
     return file_delimiter.join([key_delimiter.join(pair) for pair in files.items()])
