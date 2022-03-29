@@ -66,14 +66,11 @@ echo 'Installing required packages'
 ## Install com tools
 sudo apt-get install i2c-tools python-smbus telnet -y
 
-## Setup rc.local to start weatherstaion daemon
-sudo sed -i '/exit 0/d' /etc/rc.local
-echo 'echo "Starting Weather Station daemon..."' | sudo tee -a /etc/rc.local
-echo '/home/pi/live/bin/start_daemon' | sudo tee -a /etc/rc.local
-echo 'echo "Starting Weather Station webserver..."' | sudo tee -a /etc/rc.local
-echo '/home/pi/live/bin/start_webserver' | sudo tee -a /etc/rc.local
-echo 'exit 0' | sudo tee -a /etc/rc.local
+echo 'Copying service to /etc/systemd/system/web.service'
+## Setup service to enable dameon and start webserver
+sudo cp "/home/pi/live/setup/services/web.service" "/etc/systemd/system/"
 
+echo 'Adding service to crontab'
 ## Alter crontab for periodic uploads
 crontab < crontab.save
 
