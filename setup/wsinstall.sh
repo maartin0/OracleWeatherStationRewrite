@@ -69,6 +69,10 @@ sudo apt-get install i2c-tools python-smbus telnet -y
 echo 'Copying service to /etc/systemd/system/web.service'
 ## Setup service to enable dameon and start webserver
 sudo cp "/home/pi/live/setup/services/web.service" "/etc/systemd/system/"
+echo 'Enabling web.service'
+sudo systemctl enable web.service
+sudo systemctl start web.service
+
 
 echo 'Adding service to crontab'
 ## Alter crontab for periodic uploads
