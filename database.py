@@ -56,7 +56,7 @@ class Database:
     return [File(self.get_filepath(path)) for path in os.listdir(self.data_dir)]
 
   def clean(self):
-    """Deletes all files older than max_age_seconds. Returns number of files deleted."""
+    """Deletes all files older than max_age_seconds. Returns number of files deleted"""
     return len([file.delete() for file in self.files if file.age_seconds > self.max_age_seconds])
 
   def insert(self, *values):
@@ -64,7 +64,7 @@ class Database:
     self.current_file.insert(*values)
 
   @property
-  def content(self, key_delimiter='`', file_delimiter='¬'):
-    """Returns content of all files in database. 2 tabs between file name and content, 4 tabs between files"""
+  def content(self, key_delimiter=chr(30), file_delimiter=chr(31)):
+    """Returns content of all files in database with supplied delimiters"""
     files = {file.basename: file.content for file in self.files}
     return file_delimiter.join([key_delimiter.join(pair) for pair in files.items()])
