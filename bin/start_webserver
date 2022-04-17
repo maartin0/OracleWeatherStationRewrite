@@ -1,4 +1,5 @@
 #!/bin/bash
+source .env
 if [ -z "$PORT" ]; then
   PORT="8080";
 fi
