@@ -25,7 +25,7 @@ class Database:
   def cur_time(self):
     """Returns the current UTC time as a datetime object"""
     return datetime.utcnow()
-  
+
   @property
   def current_filename(self):
     """Returns the filename of the current file based of the current day"""
@@ -64,7 +64,7 @@ class Database:
     self.current_file.insert(*values)
 
   @property
-  def content(self, key_delimiter=chr(30), file_delimiter=chr(31)):
+  def content(self, key_delimiter=chr(30), file_delimiter=chr(29)):
     """Returns content of all files in database with supplied delimiters"""
     files = {file.basename: file.content for file in self.files}
     return file_delimiter.join([key_delimiter.join(pair) for pair in files.items()])
