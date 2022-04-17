@@ -1,3 +1,5 @@
 #!/bin/bash
-cd /home/pi/live/
-gunicorn -w 4 -b 0.0.0.0:4846 webserver:app
+if [ -z "$PORT" ]; then
+  PORT="8080";
+fi
+gunicorn -w 4 -b "0.0.0.0:$PORT" webserver:app
